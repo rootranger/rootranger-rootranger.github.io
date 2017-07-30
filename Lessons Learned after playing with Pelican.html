@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://www.rootranger.com/theme/css/foundation.min.css" media="all">
+        <script type="text/javascript" src="http://www.rootranger.com/theme/js/modernizr.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Exo+2:400,300,700,300italic,400italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://www.rootranger.com/theme/css/lamboz.css" media="all">
+        <title>Lessons Learned: Pelican - </title>
+        <meta charset="utf-8" />
+        <link href="http://www.rootranger.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title=" Full Atom Feed" />
+        <link href="http://www.rootranger.com/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title=" Categories Atom Feed" />
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-82404867-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+        
+</head>
+<body>
+    <div class="pages">
+        <ul>
+            <li class="home"><a href="http://www.rootranger.com/index.html">Home</a></li>
+            <li ><a href="http://www.rootranger.com/pages/about me page.html">About Me</a></li>
+        </ul>
+    </div>
+<div class="hp-header-inner">
+    <div class="page-header">
+        <div class="content-header">
+            <div id="title-block">
+            <h1>  <a href="http://www.rootranger.com/Lessons Learned after playing with Pelican.html" rel="bookmark"
+                    title="Permalink to Lessons Learned: Pelican">Lessons Learned: Pelican</a></h1>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="content">
+		<link rel="stylesheet" type="text/css" href="./codehilite.css">
+        <div class="data-holder">
+        <div class="row">
+           <div class="large-10 content-column column">
+<div class="content-article">
+    <header class="header-article">
+        <div class="read-more">Posted on Tue 31 January 2017</div>
+ 
+   </header>
+    <section class='article'>
+        
+        <div class="entry-summary">
+            <p>Spoiler Alert: I got bored with Pelican</p>
+        </div>
+    
+        <div class="entry-content">
+            <p>I have been a bad blogger...a terrible blogger.  The thing I feared most happened to me.   It has been many moons since my last post.  I have had a lot going on and I have gazed into my screen, read pages of code, wanted to write...then I shut my screen in frustration and went on to something else.  A lot has changed in this time...the political climate, the actual climate, technology, my willingness to try and turn something designed to be bare bones into something flashy...</p>
+<p>Thus we are here!  Lessons learned from a few months using Pelican and my first endeavor into the web.  </p>
+<h3>Lesson 1: There is not a very active Pelican community</h3>
+<p>You know whats boring? Reading a ton of documentation on GitHub and cross-referencing a bunch of code with some html templates to try and figure out how a static-page generator works.  </p>
+<p><img alt="How does it work!!" src="images/post3/figuring.jpeg" /></p>
+<p>Over the course of the past few months I've done a significant amount of reading about various static site generators.  There are some that seem lively and inviting, like a nice over priced middle-class community and then there is Pelican. </p>
+<p>Pelican's community is pretty non-existent.  It would be nice to jump onto a sub-reddit dedicated to Pelican development or find answers to all of my questions on Stack Overflow but my success utilizing both of these resources has been limited.  </p>
+<p>I think there are a couple of reasons for this.  </p>
+<p>First, the web development community in general is not focused on static site development.  APIs and more complex sites open the door to a great deal of conversation whereas, with a static site, a generator is a convenience rather than a necessity.  If I wanted to I could write my whole site in html...Pelican just streamlines the process. </p>
+<p>Second, simplicity.  Its not really that complicated to do stuff with a static site.  Its basically html and some sort of templating engine.  As I was diving into my site I noticed I was not getting accurate Google Analytics results.  It was really easy for me to trouble shoot by pasting the requisite Google provisioned javascript into different places within the html that Pelican generated and see what worked.  </p>
+<p>I could easily solve all of my problems this way.  What I really want to do is add a neat little picture to my feed list.  Something eye-catching for all of my fans to click on instead of words that they have to waste time reading.  I could hard-code this and make it laborious on myself but then why use a generator.  I want to take advantage of what its already doing...but first I have to figure out exactly what it is doing.  </p>
+<p>Since trouble shooting is so easy, I guess most people don't require a ton of help as they develop, but Pelican is for people focused on getting words out...not really on presenting content to the general public.   </p>
+<h3>Lesson 2: Where's the Documentation</h3>
+<p>I hate the documentation available for <a href="http://docs.getpelican.com/en/3.4.0/index.html">Pelican</a>. Maybe it's just me and the way I like content laid out but I cannot stand it.  I've messed with my site, I have set out with goals in term's of changes, and I have spent way to long staring at the documentation.  </p>
+<p>I don't think I have referenced the documentation successfully a single time.  I made several attempts but I just don't find the information provided adequate.  Maybe it's me and I just do not have the patience for crawling through the documentation to solve a specific problem. </p>
+<p>I feel like it is just outdated.  Nobody really presents to the general public using Pelican so there is no reason to keep up with trends.  The user base is pretty knowledgeable and I feel like people with specific needs tend to create there own generators as opposed to refining these old ones.  </p>
+<p>I am not sure thats something I really want to get into.  There are a million static blog flavors out there and I don't want to be a part of the over-population epidemic plaguing our world.</p>
+<h3>Lesson 3: Pelican almost killed my blog</h3>
+<p>I've been messing around with the theme I chose out of the bucket that comes packaged with Python.  Months worth of messing around! I couldn't take it anymore...I had to go away...get to my happy place.</p>
+<p><img alt="Get AWAY!!!" src="images/post3/bigsur.jpg" /></p>
+<p>Making pictures and watching it come to life was fun at first.  It was new and I was cautious...probably more than I needed to be.  After that, it was tedious to make changes, streamlined changes anyway.  I could hack my way through stuff, but I just am not a fan of the way I am able to make things look.  </p>
+<p>I never produced anything in Pelican, or saw something on the web made in Pelican, that I thought was instantly appealing.  Nothing flashy or inviting and thats kind of what I was hoping for.  The attempts and tries turned to tedium, the tedium turned to stagnate RootRanger web content and now DIVORCE.</p>
+<h3>In The Works</h3>
+<p>So effective immediately, a new look for RootRanger is in the works.  Im going to stick with a static blog but instead of jumping into the first thing that tickles my fancy I am going to be a little more deliberate in what I decide to work with.  Expect to read about this process in my next few blogs.</p>
+<p>In addition to this, I recently picked up a Raspberry Pi 3 to mess around with.  For a while I have been working on a project meant to streamline my fitness exploits.  I've been getting soft and it is time to whip myself back into shape.  I wrote a little program that emails me my daily workout schedule every morning.  It is fed by a CSV file with my master plan and it scrapes a few web pages when necessary.  I plan on adding a web side to control it...hopefully remotely.  I'm going to write about this in the future too...it's a little off topic but fun.  Give me a little time to make it super sweet and, to workup a mental sweat as they say, and then check back in.  </p>
+        </div>
+    </section>
+    <footer class="footer-article">
+        <div class="tags-and-categories">Filed under <a href="http://www.rootranger.com/category/tech.html">Tech</a>
+        | Tagged: <a href="http://www.rootranger.com/tag/fun.html">fun </a><a href="http://www.rootranger.com/tag/tech.html">tech </a><a href="http://www.rootranger.com/tag/learning.html">learning </a>
+        | <a href="http://www.rootranger.com/Lessons Learned after playing with Pelican.html" rel="bookmark"
+         title="Permalink to Lessons Learned: Pelican">Permalink</a>            
+        </div>
+        <!-- metaldata 
+        -->
+    </footer>
+    <!-- disqus  -->
+</div>
+            </div>
+            <div class="large-2 aside column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="http://www.setarehbeauty.com/">Setareh Beauty</a></li>
+                    <li><a href="http://getpelican.com/">Pelican</a></li>
+                    <li><a href="http://python.org/">Python.org</a></li>
+                    <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                </ul>
+				<h3>Social Media</h3>
+				<ul>
+					<li><a href="https://www.facebook.com/therootranger/">Facebook</a></li>
+					<li><a href="https://github.com/rootranger">GitHub</a></li>
+				</ul>
+            </div>
+         </div>
+    </div>
+</div>
+    <div class="footer">
+        <div class="data-holder">
+        <div class="row">
+            <div class="large-3 column">
+<div class="credits">
+    <h3>Credits</h3>
+    <p>
+    Powered by <a href="http://getpelican.com/">Pelican</a>, 
+    which takes great advantage of <a href="http://python.org">Python</a>.
+    </p>
+    <p>
+    This site makes use of <a href="http://foundation.zurb.com">Zurb Foundation Framework.</a>
+    </p>
+    <p>Enjoy!</a>
+</div>           </div>
+           <div class="large-6 tag-cloud column">
+                <h3>Tags</h3>
+                <ul>
+                    <li><a href="http://www.rootranger.com/tag/fun.html">fun</a>(3)</li>
+                    <li><a href="http://www.rootranger.com/tag/tech.html">tech</a>(3)</li>
+                    <li><a href="http://www.rootranger.com/tag/learning.html">learning</a>(3)</li>
+                </ul>
+            </div>
+            <div class="large-3 category-column column">
+                <h3>Categories</h3>
+                <ul>
+                    <li class="active"><a href="http://www.rootranger.com/category/tech.html">Tech</a> (3)</li>
+                </ul>
+             
+            </div>
+        </row>
+        </div>
+    </div>
+</body>
+</html>

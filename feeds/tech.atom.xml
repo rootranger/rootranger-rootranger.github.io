@@ -1,5 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title></title><link href="http://www.rootranger.com/" rel="alternate"></link><link href="http://www.rootranger.com/feeds/tech.atom.xml" rel="self"></link><id>http://www.rootranger.com/</id><updated>2017-07-31T06:00:00-04:00</updated><entry><title>Lessons Learned: Pelican</title><link href="http://www.rootranger.com/Lessons%20Learned%20after%20playing%20with%20Pelican.html" rel="alternate"></link><published>2017-07-31T06:00:00-04:00</published><author><name>simzilla</name></author><id>tag:www.rootranger.com,2017-07-31:Lessons Learned after playing with Pelican.html</id><summary type="html">&lt;p&gt;I have been a bad blogger...a terrible blogger.  The thing I feared most happened to me.   It has been many moons since my last post.  I have had a lot going on and I have gazed into my screen, read pages of code, wanted to write...then I shut my screen in frustration and went on to something else.  A lot has changed in this time...the political climate, the actual climate, technology, my willingness to try and turn something designed to be bare bones into something flashy...&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title></title><link href="http://www.rootranger.com/" rel="alternate"></link><link href="http://www.rootranger.com/feeds/tech.atom.xml" rel="self"></link><id>http://www.rootranger.com/</id><updated>2017-12-06T06:00:00-05:00</updated><entry><title>WordPress on your Machine..made Easy!</title><link href="http://www.rootranger.com/Local%20Dev%20environment...HOORAY!.html" rel="alternate"></link><published>2017-12-06T06:00:00-05:00</published><author><name>simzilla</name></author><id>tag:www.rootranger.com,2017-12-06:Local Dev environment...HOORAY!.html</id><summary type="html">&lt;p&gt;Soooo...I did it again.  I went months without posting anything.  Why you ask? Because I am a mess of projects...and emotions.  I started writing this super long post about this Python project I created to email myself a daily workout from a plan I created but then I hurt myself and had to scale back my training.  My depression made me abandon this post.  I started jacking with a Raspberry Pi...it had a broken usb port...so I set it aside.&lt;/p&gt;
+&lt;p&gt;My life has been a flurry of abandoned work and unrealized dreams.&lt;/p&gt;
+&lt;p&gt;Worst of all, my wife finally decided to relocate her website.  I rushed to get ready to create a new one for her...I took too long so she paid somebody (sadness), but in making the attempt I did some research into setting up a development environment for WordPress on my local machine.  Below I've documented my steps for my many readers...and mostly so that I can remember how to do it myself.&lt;/p&gt;
+&lt;h2&gt;What is it?&lt;/h2&gt;
+&lt;p&gt;This isn't my first rodeo.  I have a nasty and abused laptop that I utilize for developing and running scripts.  During my first trip into WordPress development I threw a LAMP stack on it and went for it.  This was a total pain!  I had to SSH into it or VNC and I knew that it would be configured differently from whatever host platform I decided to go with.  It got all full of crap, I couldn't roll anything back, and eventually I just shut it off and forgot about it.    &lt;/p&gt;
+&lt;p&gt;This last go around I discovered the many V's of WordPress development.  VV and VVV allow me to create virtual-environments on my laptop so I can mirror the configuration of my host pretty closely and I can do everything without any extra hops to another physical machine.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Varying Variable Vagrants" src="images/post4/VVV.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;I can run as many sites as I want, delete, edit, or publish them from anywhere and its all pretty easy.  &lt;/p&gt;
+&lt;h2&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;First, you are going to need the most current version of  &lt;a href="https://www.virtualbox.org/"&gt;VirtualBox&lt;/a&gt;.  There are other virtual machine clients but VirtualBox is free.  I'm sure VMWare or some other viewer will work but if you venture down this road you can pack up your money bags and go alone!  It is super easy to install VirtualBox and there is a ton of support available if you jack something up.&lt;/p&gt;
+&lt;p&gt;Second, you are going to need &lt;a href="www.vagrantup.com"&gt;Vagrant&lt;/a&gt;.  Vagrant is a tool, for use with your Virtual Machine client, that builds and allows you to manage virtual machine environments. So if you are a developer you can create an isolated and reproducible environment that will mirror the environment you intend your users to utilize.  This is like a building block toward our journey of creating an environment for our WordPress works.  It is really easy to install.  Go to the webpage and download the version that matches your system.  I have only utilized it in the command-line.  I don't even think there is a GUI interface...so load it up and you are good to go.&lt;/p&gt;
+&lt;p&gt;Once you have Vagrant installed there are a couple of plug-ins you can install that are supposed to make creating new sites easier.  Personally, I never got either of them to work.  Try this out:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant plugin install vagrant-hostupdater
+vagrant plugin install vagrant-triggers
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+These plugins are supposed to automatically update your host file and allow you to add new sites with ease.  Like I said, they didn't work for me but updating the host file yourself is as easy as updating a host file...I'll cover it...&lt;/p&gt;
+&lt;h2&gt;Picking up the Vagrants&lt;/h2&gt;
+&lt;p&gt;So VVV, or Varying Variable Vagrants, is the piece of software that brings this all together.  VVV is an open-source vagrant configuration.  This particular configuration has been designed specifically for use with WordPress.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="VVV on Github" src="images/post4/VVVgithub.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;I have yet to attempt a deployment from a site I have worked on using VVV, but prototyping, learning, and building out a few sites has really been great using VVV.&lt;/p&gt;
+&lt;p&gt;Installation is fairly straight forward.  All you really need to do is clone VVV straight from GitHub to wherever you will be doing your development.  For instance, I have the following folder layout:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Local VVV" src="images/post4/Filestruct.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;In order to get VVV into the desired location navigate to it from the command-line and execute your clone:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git https://github.com/Varying-Vagrant-Vagrants/VVV.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+You can also download the zip, but that is way less l33t.&lt;/p&gt;
+&lt;p&gt;Once VVV is in place, and extracted if necessary, all you have to do to run it for the first time is run the following command from with the VVV folder:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant up
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+The first time you run it you might as well turn on some Netflix.  I think it took my system about 45 minutes to setup the VM and download some updates.  Once its all finished, navigate to one of the canned URLs like &lt;a href="vvvtest.dev"&gt;vvvtest&lt;/a&gt; and you should see a test page.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Test Page" src="images/post4/vvvtest.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;To stop the VM, run the command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant halt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2&gt;Creating a Page of your Own&lt;/h2&gt;
+&lt;p&gt;At this point you are all setup. Personally, I ran into a little trouble right about now.  Creating a new site is simple, but if the plug-ins don't all jive you have to jump through some hoops to edit your site.  &lt;/p&gt;
+&lt;p&gt;First, you have to create the site, enter this command in your VVV directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vv create
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+You will get hit with a few questions regarding the name of your site and the url you would like to access it from locally, usually something.dev, make sure you remember this url since it is what you will use to access your site.&lt;/p&gt;
+&lt;p&gt;After that command is done running you should be given a command prompt.  At this point you need to run the command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant up --provision
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+This will ensure your new sites are accessible and ready for work.&lt;/p&gt;
+&lt;h2&gt;Did it work?&lt;/h2&gt;
+&lt;p&gt;Let me start by apologizing...I'm about to save you hours of development frustration...the right of passage that we all love.  If you are like me, you will see that your VM is running and try to navigate to your newly created site.  Maybe your plug-ins will all be chugging along and you'll land on this site and start WordPressing it up.  I however, did not have this experience.  My VM was running but I could not navigate to any newly created sites.  The issue here, I found after several hours, was my host file but there is a really easy fix.  &lt;/p&gt;
+&lt;p&gt;You are going to have to find the file "vvv-config.yml" in your VVV folder.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="VVV Directory" src="images/post4/vvv-configpic.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;This file contains a bunch of configurations for your VVV environment, and if your junk is not working, it most likely does not contain an entry for your newly created site.  If thats the case, you will have to create a really simple entry, that will in turn ensure your host file is edited to reflect the new site.  It should look like the example below (where bpwb.dev is the new site I tried to create):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Edited vvv-config file" src="images/post4/vvv-configpic2.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;After you have made these changes run another:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant up --provision
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+After your VM is done spinning up you should be able to access your new site.&lt;/p&gt;
+&lt;h2&gt;Who knows what's next?&lt;/h2&gt;
+&lt;p&gt;I have a ton of little projects that I am trying to sort out.  I have a lot of good ideas and its really daunting.  So much...&lt;/p&gt;
+&lt;p&gt;I talked about my Python workout script...that was pretty depressing...I plan on writing about it but I think I'll do it as a short blurb and a share of some code from GitHub.&lt;/p&gt;
+&lt;p&gt;Anyway, my priorities right now are building a Wordpress site for a side project I am doing with my wife, re-doing my static site, creating a wireless hotspot for my VPN at home, and rebuilding a stainless steel road bike I picked up for a few bucks.  Very unfocused stuff.  &lt;/p&gt;
+&lt;p&gt;I have some free time over the next few weeks so hopefully I will be able to rapid fire out a few posts.  I'll probably even throw something up about the bike to save it for posterity since nobody reads this thing anyways.  Don't hold your breath.&lt;/p&gt;</summary><category term="fun"></category><category term="tech"></category><category term="learning"></category></entry><entry><title>Lessons Learned: Pelican</title><link href="http://www.rootranger.com/Lessons%20Learned%20after%20playing%20with%20Pelican.html" rel="alternate"></link><published>2017-07-31T06:00:00-04:00</published><author><name>simzilla</name></author><id>tag:www.rootranger.com,2017-07-31:Lessons Learned after playing with Pelican.html</id><summary type="html">&lt;p&gt;I have been a bad blogger...a terrible blogger.  The thing I feared most happened to me.   It has been many moons since my last post.  I have had a lot going on and I have gazed into my screen, read pages of code, wanted to write...then I shut my screen in frustration and went on to something else.  A lot has changed in this time...the political climate, the actual climate, technology, my willingness to try and turn something designed to be bare bones into something flashy...&lt;/p&gt;
 &lt;p&gt;Thus we are here!  Lessons learned from a few months using Pelican and my first endeavor into the web.  &lt;/p&gt;
 &lt;h3&gt;Lesson 1: There is not a very active Pelican community&lt;/h3&gt;
 &lt;p&gt;You know whats boring? Reading a ton of documentation on GitHub and cross-referencing a bunch of code with some html templates to try and figure out how a static-page generator works.  &lt;/p&gt;

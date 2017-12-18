@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://www.rootranger.com/theme/css/foundation.min.css" media="all">
+        <script type="text/javascript" src="http://www.rootranger.com/theme/js/modernizr.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Exo+2:400,300,700,300italic,400italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://www.rootranger.com/theme/css/lamboz.css" media="all">
+        <title>WordPress on your Machine..made Easy! - </title>
+        <meta charset="utf-8" />
+        <link href="http://www.rootranger.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title=" Full Atom Feed" />
+        <link href="http://www.rootranger.com/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title=" Categories Atom Feed" />
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-82404867-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+        
+</head>
+<body>
+    <div class="pages">
+        <ul>
+            <li class="home"><a href="http://www.rootranger.com/index.html">Home</a></li>
+            <li ><a href="http://www.rootranger.com/pages/about me page.html">About Me</a></li>
+        </ul>
+    </div>
+<div class="hp-header-inner">
+    <div class="page-header">
+        <div class="content-header">
+            <div id="title-block">
+            <h1>  <a href="http://www.rootranger.com/Local Dev environment...HOORAY!.html" rel="bookmark"
+                    title="Permalink to WordPress on your Machine..made Easy!">WordPress on your Machine..made Easy!</a></h1>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="content">
+		<link rel="stylesheet" type="text/css" href="./codehilite.css">
+        <div class="data-holder">
+        <div class="row">
+           <div class="large-10 content-column column">
+<div class="content-article">
+    <header class="header-article">
+        <div class="read-more">Posted on Wed 06 December 2017</div>
+ 
+   </header>
+    <section class='article'>
+        
+        <div class="entry-summary">
+            <p>Discombobulation! Setting up a local development environment for WordPress!</p>
+        </div>
+    
+        <div class="entry-content">
+            <p>Soooo...I did it again.  I went months without posting anything.  Why you ask? Because I am a mess of projects...and emotions.  I started writing this super long post about this Python project I created to email myself a daily workout from a plan I created but then I hurt myself and had to scale back my training.  My depression made me abandon this post.  I started jacking with a Raspberry Pi...it had a broken usb port...so I set it aside.</p>
+<p>My life has been a flurry of abandoned work and unrealized dreams.</p>
+<p>Worst of all, my wife finally decided to relocate her website.  I rushed to get ready to create a new one for her...I took too long so she paid somebody (sadness), but in making the attempt I did some research into setting up a development environment for WordPress on my local machine.  Below I've documented my steps for my many readers...and mostly so that I can remember how to do it myself.</p>
+<h2>What is it?</h2>
+<p>This isn't my first rodeo.  I have a nasty and abused laptop that I utilize for developing and running scripts.  During my first trip into WordPress development I threw a LAMP stack on it and went for it.  This was a total pain!  I had to SSH into it or VNC and I knew that it would be configured differently from whatever host platform I decided to go with.  It got all full of crap, I couldn't roll anything back, and eventually I just shut it off and forgot about it.    </p>
+<p>This last go around I discovered the many V's of WordPress development.  VV and VVV allow me to create virtual-environments on my laptop so I can mirror the configuration of my host pretty closely and I can do everything without any extra hops to another physical machine.  </p>
+<p><img alt="Varying Variable Vagrants" src="images/post4/VVV.jpg" /></p>
+<p>I can run as many sites as I want, delete, edit, or publish them from anywhere and its all pretty easy.  </p>
+<h2>Prerequisites</h2>
+<p>First, you are going to need the most current version of  <a href="https://www.virtualbox.org/">VirtualBox</a>.  There are other virtual machine clients but VirtualBox is free.  I'm sure VMWare or some other viewer will work but if you venture down this road you can pack up your money bags and go alone!  It is super easy to install VirtualBox and there is a ton of support available if you jack something up.</p>
+<p>Second, you are going to need <a href="www.vagrantup.com">Vagrant</a>.  Vagrant is a tool, for use with your Virtual Machine client, that builds and allows you to manage virtual machine environments. So if you are a developer you can create an isolated and reproducible environment that will mirror the environment you intend your users to utilize.  This is like a building block toward our journey of creating an environment for our WordPress works.  It is really easy to install.  Go to the webpage and download the version that matches your system.  I have only utilized it in the command-line.  I don't even think there is a GUI interface...so load it up and you are good to go.</p>
+<p>Once you have Vagrant installed there are a couple of plug-ins you can install that are supposed to make creating new sites easier.  Personally, I never got either of them to work.  Try this out:</p>
+<div class="highlight"><pre><span></span>vagrant plugin install vagrant-hostupdater
+vagrant plugin install vagrant-triggers
+</pre></div>
+
+
+<p><br />
+These plugins are supposed to automatically update your host file and allow you to add new sites with ease.  Like I said, they didn't work for me but updating the host file yourself is as easy as updating a host file...I'll cover it...</p>
+<h2>Picking up the Vagrants</h2>
+<p>So VVV, or Varying Variable Vagrants, is the piece of software that brings this all together.  VVV is an open-source vagrant configuration.  This particular configuration has been designed specifically for use with WordPress.  </p>
+<p><img alt="VVV on Github" src="images/post4/VVVgithub.jpg" /></p>
+<p>I have yet to attempt a deployment from a site I have worked on using VVV, but prototyping, learning, and building out a few sites has really been great using VVV.</p>
+<p>Installation is fairly straight forward.  All you really need to do is clone VVV straight from GitHub to wherever you will be doing your development.  For instance, I have the following folder layout:</p>
+<p><img alt="Local VVV" src="images/post4/Filestruct.jpg" /></p>
+<p>In order to get VVV into the desired location navigate to it from the command-line and execute your clone:</p>
+<div class="highlight"><pre><span></span>git clone git https://github.com/Varying-Vagrant-Vagrants/VVV.git
+</pre></div>
+
+
+<p><br />
+You can also download the zip, but that is way less l33t.</p>
+<p>Once VVV is in place, and extracted if necessary, all you have to do to run it for the first time is run the following command from with the VVV folder:</p>
+<div class="highlight"><pre><span></span>vagrant up
+</pre></div>
+
+
+<p><br />
+The first time you run it you might as well turn on some Netflix.  I think it took my system about 45 minutes to setup the VM and download some updates.  Once its all finished, navigate to one of the canned URLs like <a href="vvvtest.dev">vvvtest</a> and you should see a test page.</p>
+<p><img alt="Test Page" src="images/post4/vvvtest.jpg" /></p>
+<p>To stop the VM, run the command:</p>
+<div class="highlight"><pre><span></span>vagrant halt
+</pre></div>
+
+
+<p><br /></p>
+<h2>Creating a Page of your Own</h2>
+<p>At this point you are all setup. Personally, I ran into a little trouble right about now.  Creating a new site is simple, but if the plug-ins don't all jive you have to jump through some hoops to edit your site.  </p>
+<p>First, you have to create the site, enter this command in your VVV directory:</p>
+<div class="highlight"><pre><span></span>vv create
+</pre></div>
+
+
+<p><br />
+You will get hit with a few questions regarding the name of your site and the url you would like to access it from locally, usually something.dev, make sure you remember this url since it is what you will use to access your site.</p>
+<p>After that command is done running you should be given a command prompt.  At this point you need to run the command:</p>
+<div class="highlight"><pre><span></span>vagrant up --provision
+</pre></div>
+
+
+<p><br />
+This will ensure your new sites are accessible and ready for work.</p>
+<h2>Did it work?</h2>
+<p>Let me start by apologizing...I'm about to save you hours of development frustration...the right of passage that we all love.  If you are like me, you will see that your VM is running and try to navigate to your newly created site.  Maybe your plug-ins will all be chugging along and you'll land on this site and start WordPressing it up.  I however, did not have this experience.  My VM was running but I could not navigate to any newly created sites.  The issue here, I found after several hours, was my host file but there is a really easy fix.  </p>
+<p>You are going to have to find the file "vvv-config.yml" in your VVV folder.  </p>
+<p><img alt="VVV Directory" src="images/post4/vvv-configpic.jpg" /></p>
+<p>This file contains a bunch of configurations for your VVV environment, and if your junk is not working, it most likely does not contain an entry for your newly created site.  If thats the case, you will have to create a really simple entry, that will in turn ensure your host file is edited to reflect the new site.  It should look like the example below (where bpwb.dev is the new site I tried to create):</p>
+<p><img alt="Edited vvv-config file" src="images/post4/vvv-configpic2.jpg" /></p>
+<p>After you have made these changes run another:</p>
+<div class="highlight"><pre><span></span>vagrant up --provision
+</pre></div>
+
+
+<p><br />
+After your VM is done spinning up you should be able to access your new site.</p>
+<h2>Who knows what's next?</h2>
+<p>I have a ton of little projects that I am trying to sort out.  I have a lot of good ideas and its really daunting.  So much...</p>
+<p>I talked about my Python workout script...that was pretty depressing...I plan on writing about it but I think I'll do it as a short blurb and a share of some code from GitHub.</p>
+<p>Anyway, my priorities right now are building a Wordpress site for a side project I am doing with my wife, re-doing my static site, creating a wireless hotspot for my VPN at home, and rebuilding a stainless steel road bike I picked up for a few bucks.  Very unfocused stuff.  </p>
+<p>I have some free time over the next few weeks so hopefully I will be able to rapid fire out a few posts.  I'll probably even throw something up about the bike to save it for posterity since nobody reads this thing anyways.  Don't hold your breath.</p>
+        </div>
+    </section>
+    <footer class="footer-article">
+        <div class="tags-and-categories">Filed under <a href="http://www.rootranger.com/category/tech.html">Tech</a>
+        | Tagged: <a href="http://www.rootranger.com/tag/fun.html">fun </a><a href="http://www.rootranger.com/tag/tech.html">tech </a><a href="http://www.rootranger.com/tag/learning.html">learning </a>
+        | <a href="http://www.rootranger.com/Local Dev environment...HOORAY!.html" rel="bookmark"
+         title="Permalink to WordPress on your Machine..made Easy!">Permalink</a>            
+        </div>
+        <!-- metaldata 
+        -->
+    </footer>
+    <!-- disqus  -->
+</div>
+            </div>
+            <div class="large-2 aside column">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="http://www.setarehbeauty.com/">Setareh Beauty</a></li>
+                    <li><a href="http://getpelican.com/">Pelican</a></li>
+                    <li><a href="http://python.org/">Python.org</a></li>
+                    <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                </ul>
+				<h3>Social Media</h3>
+				<ul>
+					<li><a href="https://www.facebook.com/therootranger/">Facebook</a></li>
+					<li><a href="https://github.com/rootranger">GitHub</a></li>
+				</ul>
+            </div>
+         </div>
+    </div>
+</div>
+    <div class="footer">
+        <div class="data-holder">
+        <div class="row">
+            <div class="large-3 column">
+<div class="credits">
+    <h3>Credits</h3>
+    <p>
+    Powered by <a href="http://getpelican.com/">Pelican</a>, 
+    which takes great advantage of <a href="http://python.org">Python</a>.
+    </p>
+    <p>
+    This site makes use of <a href="http://foundation.zurb.com">Zurb Foundation Framework.</a>
+    </p>
+    <p>Enjoy!</a>
+</div>           </div>
+           <div class="large-6 tag-cloud column">
+                <h3>Tags</h3>
+                <ul>
+                    <li><a href="http://www.rootranger.com/tag/fun.html">fun</a>(4)</li>
+                    <li><a href="http://www.rootranger.com/tag/tech.html">tech</a>(4)</li>
+                    <li><a href="http://www.rootranger.com/tag/learning.html">learning</a>(4)</li>
+                </ul>
+            </div>
+            <div class="large-3 category-column column">
+                <h3>Categories</h3>
+                <ul>
+                    <li class="active"><a href="http://www.rootranger.com/category/tech.html">Tech</a> (4)</li>
+                </ul>
+             
+            </div>
+        </row>
+        </div>
+    </div>
+</body>
+</html>

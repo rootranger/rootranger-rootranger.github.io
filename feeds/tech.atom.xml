@@ -11,7 +11,7 @@
 &lt;p&gt;First, you are going to need the most current version of  &lt;a href="https://www.virtualbox.org/"&gt;VirtualBox&lt;/a&gt;.  There are other virtual machine clients but VirtualBox is free.  I'm sure VMWare or some other viewer will work but if you venture down this road you can pack up your money bags and go alone!  It is super easy to install VirtualBox and there is a ton of support available if you jack something up.&lt;/p&gt;
 &lt;p&gt;Second, you are going to need &lt;a href="www.vagrantup.com"&gt;Vagrant&lt;/a&gt;.  Vagrant is a tool, for use with your Virtual Machine client, that builds and allows you to manage virtual machine environments. So if you are a developer you can create an isolated and reproducible environment that will mirror the environment you intend your users to utilize.  This is like a building block toward our journey of creating an environment for our WordPress works.  It is really easy to install.  Go to the webpage and download the version that matches your system.  I have only utilized it in the command-line.  I don't even think there is a GUI interface...so load it up and you are good to go.&lt;/p&gt;
 &lt;p&gt;Once you have Vagrant installed there are a couple of plug-ins you can install that are supposed to make creating new sites easier.  Personally, I never got either of them to work.  Try this out:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant plugin install vagrant-hostupdater
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant plugin install vagrant-hostsupdater
 vagrant plugin install vagrant-triggers
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -25,7 +25,7 @@ These plugins are supposed to automatically update your host file and allow you 
 &lt;p&gt;Installation is fairly straight forward.  All you really need to do is clone VVV straight from GitHub to wherever you will be doing your development.  For instance, I have the following folder layout:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Local VVV" src="images/post4/Filestruct.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;In order to get VVV into the desired location navigate to it from the command-line and execute your clone:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone git https://github.com/Varying-Vagrant-Vagrants/VVV.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/Varying-Vagrant-Vagrants/VVV.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -47,7 +47,14 @@ The first time you run it you might as well turn on some Netflix.  I think it to
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h2&gt;Creating a Page of your Own&lt;/h2&gt;
 &lt;p&gt;At this point you are all setup. Personally, I ran into a little trouble right about now.  Creating a new site is simple, but if the plug-ins don't all jive you have to jump through some hoops to edit your site.  &lt;/p&gt;
-&lt;p&gt;First, you have to create the site, enter this command in your VVV directory:&lt;/p&gt;
+&lt;p&gt;The easiest way to create a new page is to use another script called VV...we are using a ton of V's here (VV for VVV).  &lt;/p&gt;
+&lt;p&gt;You can check out the git repo for &lt;a href="github.com/bradp/vv"&gt;VV&lt;/a&gt;, but I have Homebrew installed on my computer so downloading it is just one line in the terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;brew install bradp/vv/vv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br /&gt;
+After thats all done all you have to do is create the site, enter this command in your VVV directory:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vv create
 &lt;/pre&gt;&lt;/div&gt;
 
